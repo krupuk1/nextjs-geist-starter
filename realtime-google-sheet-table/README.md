@@ -1,12 +1,13 @@
 # Realtime Google Sheet Table WordPress Plugin
 
-A WordPress plugin that displays data from Google Sheets in a beautiful, responsive table format with real-time updates.
+A WordPress plugin that displays data from Google Sheets in a beautiful, responsive table format with true real-time synchronization. When data is added or modified in the Google Sheet, the table automatically updates without reloading the page.
 
 ## Features
 
-- Real-time data synchronization with Google Sheets
-- Responsive table design
-- Configurable refresh interval
+- True real-time synchronization with Google Sheets
+- Automatic updates when new data is added
+- Responsive and modern table design
+- Smooth animations for new data
 - Easy to use shortcode
 - Modern and clean interface
 - Error handling and loading states
@@ -34,7 +35,6 @@ A WordPress plugin that displays data from Google Sheets in a beautiful, respons
 2. Enter your Google API Key
 3. Enter your Spreadsheet ID (found in the Google Sheet URL)
 4. Set the Sheet Range (e.g., Sheet1!A1:Z1000)
-5. Configure the refresh interval (minimum 10 seconds)
 
 ### Spreadsheet Setup
 
@@ -51,9 +51,17 @@ Example:
 [google_sheet_table]
 ```
 
+## How It Works
+
+The plugin implements true real-time synchronization by:
+1. Initially loading the complete table data
+2. Continuously checking for new rows in the background
+3. Automatically appending new data with smooth animations
+4. No page reloads or table refreshes required
+
 ## Troubleshooting
 
-If the table isn't displaying:
+If the table isn't displaying or updating:
 
 1. Check if your Google API key is correct
 2. Verify that the Spreadsheet ID is correct
@@ -61,6 +69,7 @@ If the table isn't displaying:
 4. Check if your Google Sheet is publicly accessible
 5. Look for error messages in the browser console
 6. Verify that your Google Sheets API is enabled in the Google Cloud Console
+7. Check your browser's network tab to ensure API requests are working
 
 ## Support
 
