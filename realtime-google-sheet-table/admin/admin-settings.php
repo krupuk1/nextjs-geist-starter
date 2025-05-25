@@ -20,10 +20,6 @@ function rgst_register_settings() {
     register_setting('rgst_settings', 'rgst_api_key');
     register_setting('rgst_settings', 'rgst_spreadsheet_id');
     register_setting('rgst_settings', 'rgst_sheet_range');
-    register_setting('rgst_settings', 'rgst_refresh_interval', array(
-        'type' => 'integer',
-        'default' => 60
-    ));
 }
 add_action('admin_init', 'rgst_register_settings');
 
@@ -64,7 +60,7 @@ function rgst_settings_page() {
                                name="rgst_spreadsheet_id" 
                                value="<?php echo esc_attr(get_option('rgst_spreadsheet_id')); ?>" 
                                class="regular-text">
-                        <p class="description">Enter the ID of your Google Spreadsheet</p>
+                        <p class="description">Enter the ID of your Google Spreadsheet (found in the URL)</p>
                     </td>
                 </tr>
                 
@@ -79,21 +75,6 @@ function rgst_settings_page() {
                                value="<?php echo esc_attr(get_option('rgst_sheet_range', 'Sheet1!A1:Z1000')); ?>" 
                                class="regular-text">
                         <p class="description">Enter the sheet range (e.g., Sheet1!A1:Z1000)</p>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <th scope="row">
-                        <label for="rgst_refresh_interval">Refresh Interval</label>
-                    </th>
-                    <td>
-                        <input type="number" 
-                               id="rgst_refresh_interval" 
-                               name="rgst_refresh_interval" 
-                               value="<?php echo esc_attr(get_option('rgst_refresh_interval', 60)); ?>" 
-                               min="10" 
-                               class="small-text">
-                        <p class="description">Enter the refresh interval in seconds (minimum 10)</p>
                     </td>
                 </tr>
             </table>
@@ -111,6 +92,7 @@ function rgst_settings_page() {
                 <li>Created an API key</li>
                 <li>Made your Google Sheet publicly accessible or shared with appropriate permissions</li>
             </ol>
+            <p><strong>Note:</strong> The table will automatically update in real-time when changes are made to the Google Sheet.</p>
         </div>
     </div>
     <?php
